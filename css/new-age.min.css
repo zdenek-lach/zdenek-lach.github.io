@@ -540,6 +540,7 @@ footer ul li a:hover {
 .hover-text-marker:hover {
     color: black;
     font-weight: bolder;
+    text-transform: uppercase;
 }
 
 .hover-text-marker-red:hover {
@@ -661,7 +662,9 @@ nav a {
 .B:hover {
     color: blue;
 }
-
+.R:hover,.B:hover,.G:hover{
+    font-weight: bold;
+}
 .about-me {
     /*background-color: rgb(255, 251, 37);*/
     background: linear-gradient(#b3b3b3, #e2e2e2);
@@ -681,7 +684,7 @@ nav a {
     background: linear-gradient(#959da3, #4d5358)
 }
 .device-mockup{
-    transform: scale(2);
+    transform: scale(1);
     margin-left: 1rem;
 }
 @media only screen and (max-width: 600px) {
