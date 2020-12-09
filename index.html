@@ -57,7 +57,7 @@
 
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top max-width-100" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top"><img class="img-fluid logo" src="./img/logo.png"
           alt="ZL"></a>
@@ -88,7 +88,7 @@
       </div>
     </div>
   </nav>
-<!-- First page "mastHead"-->
+  <!-- First page "mastHead"-->
   <header class="masthead">
     <div class="container h-100" data-aos="zoom-in" data-aos-duration="1000">
       <div class="row h-100">
@@ -118,7 +118,7 @@
     </div>
   </header>
 
-<!-- About me section -->
+  <!-- About me section -->
 
   <section class="aboutMe about-me text-center" id="AboutMe">
     <div class="container aboutMe" data-aos="zoom-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
@@ -129,8 +129,8 @@
               class="hover-text-marker">Ostravská Univerzita</span>.
             I live in <span class="hover-text-marker">Frýdek-Místek</span> district in a family house.</p>
           <p>My computer has <span class="hover-text-marker">i7-8700k</span> overclocked to 5 GHz. 16 Gb of RGB ram..
-             <span class="R">R</span><span class="G">G</span><span class="B">B</span> is
-              important! <br />GPU needs an
+            <span class="R">R</span><span class="G">G</span><span class="B">B</span> is
+            important! <br />GPU needs an
             update, it's old-ish <span class="hover-text-marker">MSI GTX 970</span>.</p>
           <p>I can program in <span class="hover-text-marker">Java</span> and <span class="hover-text-marker">C#</span>.
             I can also create websites using <span class="hover-text-marker">HTML</span>, <span
@@ -147,7 +147,7 @@
     </div>
   </section>
 
-<!-- Project section-->
+  <!-- Project section-->
 
   <section class="myProjects bg-primary" id="myProjects">
     <div class="container" data-aos="zoom-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
@@ -205,7 +205,7 @@
     </div>
   </section>
 
-<!-- Contact section -->
+  <!-- Contact section -->
 
   <section class="cta" id="ContactMe">
     <div class="cta-content" data-aos="zoom-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
@@ -220,7 +220,7 @@
     <div class="overlay"></div>
   </section>
 
-<!-- Blog section-->
+  <!-- Blog section-->
 
   <section class="bg-primary" id="BLOG">
     <div class="container" data-aos="zoom-up" data-aos-offset="300" data-aos-easing="ease-in-sine">
@@ -300,7 +300,7 @@
       </div>
   </section>
 
-<!-- Section with all necessities required -->
+  <!-- Section with all necessities required -->
 
   <section class="bg-secondary" id=theRest>
     <div class="container">
@@ -311,7 +311,7 @@
       <ul class="list-group" data-aos="flip-down" data-aos-offset="300" data-aos-easing="ease-in-sine">
         <div class="row text-center">
           <div class="col-md">
-            <li class="list-group-item the-rest-list" >
+            <li class="list-group-item the-rest-list">
               <button type="button" class="btn the-rest-btn" data-toggle="modal"
                 data-target="#tableModal">Table</button>
             </li>
@@ -324,8 +324,8 @@
           </div>
           <div class="col-md">
             <li class="list-group-item the-rest-list">
-              <button type="button" class="btn the-rest-btn" data-toggle="modal" data-target="#complexFormModal">Complex
-                form</button>
+              <button type="button" class="btn the-rest-btn" data-toggle="modal" data-target="#complexFormModal">Order a
+                print</button>
             </li>
           </div>
           <div class="col-md">
@@ -340,7 +340,7 @@
     </div>
   </section>
 
-<!-- Footer and social links -->
+  <!-- Footer and social links -->
 
   <footer>
     <div class="container" data-aos="flip-down" data-aos-easing="ease-in-sine">
@@ -367,7 +367,7 @@
   <script src="js/new-age.min.js"></script>
   <script src="https://kit.fontawesome.com/15ea8d5ecf.js" crossorigin="anonymous"></script>
 
-<!-- Modal window for contact form -->
+  <!-- Modal window for contact form -->
 
   <div class="modal fade" id="contactModal" tabindex="" role="dialog" aria-labelledby="contactModalLabel"
     aria-hidden="true">
@@ -408,7 +408,7 @@
     </div>
   </div>
 
-<!-- Modal window for basic Table-->
+  <!-- Modal window for basic Table-->
 
   <div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="tableModalLabel"
     aria-hidden="true">
@@ -531,7 +531,7 @@
     </div>
   </div>
 
-<!-- Modal window for Breadcrumbs -->
+  <!-- Modal window for Breadcrumbs -->
 
   <div class="modal fade" id="breadcrumbModal" tabindex="-1" role="dialog" aria-labelledby="breadcrumbModalLabel"
     aria-hidden="true">
@@ -558,91 +558,219 @@
   </div>
 
 
-<!-- Modal windows for complex form -->
+  <!-- Modal windows for print order complex form -->
 
   <div class="modal fade" id="complexFormModal" tabindex="-1" role="dialog" aria-labelledby="complexFormModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="complexFormModalLabel">Complex form</h5>
+          <h5 class="modal-title" id="complexFormModalLabel">Order a custom 3D print</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <div class="row">
-              <div class="col"><input type="text" placeholder="text input">Text input</div>
+          <form>
+            <div class="container">
+              <div class="row order-row">
+                <div class="col-2">Your mail:</div>
+                <div class="col-10"><input type="email" name="email" id="printRequest"
+                    placeholder="yourmail@domain.com"></div>
+              </div>
 
-              <div class="col">
-                <input type="radio" id="r1" name="radioButtons" value="r1">
-                <label for="r1">Radio 1</label><br>
-
-                <input type="radio" id="r2" name="radioButtons" value="r2">
-                <label for="r2">Radio 2</label><br>
-
-                <input type="radio" id="r3" name="radioButtons" value="r3">
-                <label for="r3">Radio 3</label></div>
-
-              <div class="col"><input type="checkbox">checkbox</div>
-              <div class="col"><input type="checkbox" checked>checkbox checked</div>
-              <div class="col"><select name="" id="">
-                  <option value="">Option 1</option>
-                  <option value="">Option 2</option>
-                  <option value="">Option 3</option>
-                </select></div>
-              <div class="row">
-                <div class="col"></div>
-                <div class="col"><textarea name="" id="" cols="80" rows="10"></textarea></div>
+              <div class="row order-row">
+                <div class="col-2">Your model:</div>
+                <input type="file" name="file" id="fileUpload">
               </div>
             </div>
 
-          </div>
+            <div class="row order-row">
+              <div class="col">
+                <label for="material">Choose material:</label>
+                <select class="form-control" name="material" id="material">
+                  <option> I don't know (I'll help you choose)</option>
+                  <option> PLA - (Popular, High-detail, Cheap)</option>
+                  <option> PETG - (Strongest, Medium-detail, More expensive)</option>
+                  <option> PTU - (Flexible, Medium-detail, Fairly expensive</option>
+                </select>
+              </div>
+            </div>
+
+
+
+            <div class="row order-row">
+              <div class="col">
+                <label for="color">Choose color:</label>
+              </div>
+              <div class="col">
+                <input type="radio" id="BlackColor" name="color" value="BlackColor">
+                <label for="BlackColor">Black</label><br>
+                <input type="radio" id="WhiteColor" name="color" value="WhiteColor">
+                <label for="WhiteColor">White</label><br>
+                <input type="radio" id="GreyColor" name="color" value="GreyColor" disabled>
+                <label for="GreyColor">Grey - (N/A)</label>
+              </div>
+              <div class="col">
+                <input type="radio" id="RedColor" name="color" value="RedColor">
+                <label for="RedColor">Red</label><br>
+                <input type="radio" id="GreenColor" name="color" value="GreenColor">
+                <label for="GreenColor">Green</label><br>
+                <input type="radio" id="BlueColor" name="color" value="BlueColor">
+                <label for="BlueColor">Blue</label>
+              </div>
+              <div class="col">
+                <input type="radio" id="PinkColor" name="color" value="PinkColor" disabled>
+                <label for="PinkColor">Pink - (N/A)</label><br>
+                <input type="radio" id="LimeColor" name="color" value="LimeColor">
+                <label for="LimeColor">Lime</label><br>
+                <input type="radio" id="TealColor" name="color" value="TealColor">
+                <label for="TealColor">Teal</label><br>
+              </div>
+            </div>
+
+            <div class="row order-row">
+              <div class="col sm-3">
+                <label for="color">Choose postprocessing:</label>
+                <div class="col sm-3"><input type="checkbox" checked> None</div>
+              </div>
+              <div class="col">
+
+                <div class="col sm-3"><input type="checkbox"> Chemical Smoothing</div>
+                <div class="col sm-3"><input type="checkbox"> Manual Smoothing</div>
+                <div class="col sm-3"><input type="checkbox"> Glue parts together</div>
+              </div>
+              <div class="col">
+                <div class="col sm-3"><input type="checkbox"> Color painiting</div>
+                <div class="col sm-3"><input type="checkbox"> Primer layer</div>
+                <div class="col sm-3"><input type="checkbox" disabled> Clear coat - (N/A)</div>
+              </div>
+              <div class="col">
+                <div class="col sm-3"><input type="checkbox"> Detail painting</div>
+
+                <div class="col sm-3"><input type="checkbox"> Other - please specify..</div>
+              </div>
+            </div>
+
+
+            <div class="row order-row">
+              <div class="col">Description</div>
+              <div class="col"><textarea name="" id="" cols="80" rows="5"
+                  placeholder="Please describe your model, it's requirements or add your own comments and I'll do my best to help you out!"></textarea>
+              </div>
+            </div>
+          
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Send</button>
         </div>
+        </form>
       </div>
     </div>
+
+  </div>
   </div>
 
-<!-- Modal window for tabs-->
+
+  <!-- Modal window for tabs-->
 
   <div class="modal fade" id="tabsModal" tabindex="-1" role="dialog" aria-labelledby="tabsModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="tabsModalLabel">Tabs Modal Title</h5>
+          <h5 class="modal-title" id="tabsModalLabel">Useful tabs</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-                aria-controls="nav-home" aria-selected="true">Tab 1</a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                aria-controls="nav-profile" aria-selected="false">Tab 2</a>
-              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-                aria-controls="nav-contact" aria-selected="false">Tab 3</a>
+          <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="currency-tab" data-toggle="tab" href="#currency" role="tab"
+                  aria-controls="currency" aria-selected="true">Currency</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="translator-tab" data-toggle="tab" href="#translator" role="tab"
+                  aria-controls="translator" aria-selected="false">Translator</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="quiz-tab" data-toggle="tab" href="#quiz" role="tab" aria-controls="quiz"
+                  aria-selected="false">Quiz</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="currency" role="tabpanel" aria-labelledby="currency-tab">
+                <div class="row">
+                  <div class="col text-bold">THE OTHER ONE</div>
+                  <div class="col text-bold">CZK</div>
+                </div>
+                <div class="row">
+                  <div class="col">1 EUR</div>
+                  <div class="col">26.58 CZK</div>
+                </div>
+                <div class="row">
+                  <div class="col">1 USD</div>
+                  <div class="col">21,77 CZK</div>
+                </div>
+                <div class="row">
+                  <div class="col">1 GBP</div>
+                  <div class="col">29,04 CZK</div>
+                </div>
+                <div class="row">
+                  <div class="col">1 CAD</div>
+                  <div class="col">16,91 CZK</div>
+                </div>
+                <div class="row">
+                  <div class="col">1 RUB</div>
+                  <div class="col"> 0,29 CZK</div>
+                </div>
+                <div class="row text-muted">
+                  <div class="col">Values from</div>
+                  <div class="col"> 9.12. 7:15 pm</div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="translator" role="tabpanel" aria-labelledby="translator-tab">
+                <div class="row">
+                  <div class="col">HELLO</div>
+                  <div class="col">in English</div>
+                </div>
+                <div class="row">
+                  <div class="col">AHOJ</div>
+                  <div class="col">in Czech</div>
+                </div>
+                <div class="row">
+                  <div class="col">HALLO</div>
+                  <div class="col">in Deutsch</div>
+                </div>
+                <div class="row">
+                  <div class="col">Привет!</div>
+                  <div class="col">in Russian</div>
+                </div>
+                <div class="row">
+                  <div class="col">Hallå</div>
+                  <div class="col">in Swedish</div>
+                </div>
+                <div class="row">
+                  <div class="col">你好[Nǐ hǎo]</div>
+                  <div class="col">in Chinese</div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="quiz" role="tabpanel" aria-labelledby="quiz-tab">
+                <div class="col">What is the first thing you do, when you start coding?</div>
+                <div id="quizAnswer" style="margin: 2rem;">I don't know 😭</div>
+                <button class="btn" onclick="idontknow()">TELL ME</button>
+              </div>
             </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">Lorem,
-              ipsum dolor sit amet consectetur adipisicing elit. Possimus perspiciatis, obcaecati accusantium, eaque
-              tenetur nam, nesciunt eligendi aperiam asperiores numquam dolor laudantium aliquam suscipit doloribus
-              omnis provident sit rem facilis.</div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Lorem, ipsum
-              dolor sit amet consectetur adipisicing elit. Possimus perspiciatis, obcaecati accusantium, eaque tenetur
-              nam, nesciunt eligendi aperiam asperiores numquam dolor laudantium aliquam suscipit doloribus omnis
-              provident sit rem facilis.</div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Lorem, ipsum
-              dolor sit amet consectetur adipisicing elit. Possimus perspiciatis, obcaecati accusantium, eaque tenetur
-              nam, nesciunt eligendi aperiam asperiores numquam dolor laudantium aliquam suscipit doloribus omnis
-              provident sit rem facilis.</div>
+         </div>
+         <script>
+          function idontknow() {
+            document.getElementById("quizAnswer").innerHTML = "Hello World!";
+          }
+        </script>
+
+            </div>
           </div>
         </div>
       </div>

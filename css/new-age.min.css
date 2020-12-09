@@ -687,7 +687,42 @@ nav a {
     transform: scale(1);
     margin-left: 1rem;
 }
+.order-row{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.text-bold{
+    font-weight: bold;
+}
+.nav-link{
+    color: rgb(41, 41, 41);
+}
+.modal .container{
+    margin: 2rem;
+}
+body{
+    max-width: 100%;
+}
 @media only screen and (max-width: 600px) {
+    .navbar-expand-md {
+        width: 100%;
+    }
+    .d-block{
+        max-width: 100%;
+    }
+    .carousel{
+        margin:0;
+        max-width: 100%;
+    }
+    .navbar-expand-lg{
+        max-width: 100%;
+    }
+    .navbar-toggler{
+        padding: 0;
+    }
+    .navbar .container{
+        max-width: 75%;
+    }
     .carousel-control-prev-icon {
         background-color: rgba(255, 255, 255, 0);
         width: 25%;
