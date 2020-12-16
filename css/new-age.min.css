@@ -703,6 +703,14 @@ nav a {
 body{
     max-width: 100%;
 }
+.form-request-print{
+    margin: 1rem;
+    padding: 1rem;
+}
+.container .no-offset-order{
+    margin: 0;
+    padding: 0;
+}
 @media only screen and (max-width: 600px) {
     .navbar-expand-md {
         width: 100%;
