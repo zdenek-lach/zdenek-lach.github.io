@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 	let skipIntro = localStorage.getItem('skipIntro') === 'true'; // Retrieve skipIntro from localStorage
 
-	const textElement = document.getElementById('text');
-	const textContainer = document.getElementById('text-container');
-	const header = document.getElementById('header');
-	const mainContent = document.getElementById('main-content');
+	const textElement = document.querySelector('.text');
+	const textContainer = document.querySelector('.text-container');
+	const header = document.querySelector('.header');
+	const mainContent = document.querySelector('.main-content');
+	const replayIntroButton = document.querySelector('.replay-intro-button');
 	header.style.display = 'none'; // Hide the header initially
 	mainContent.style.display = 'none'; // Hide the main content initially
+	replayIntroButton.style.display = 'none'; // Hide the replay button initially
 
 	const intro_messages = [
 		'oh?',
@@ -47,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		header.classList.add('visible'); // Ensure the header is visible
 		mainContent.style.display = 'block'; // Show the main content
 		mainContent.classList.add('visible'); // Ensure the main content is visible with animation
+		replayIntroButton.style.display = 'inline-block'; // Show the replay button
+		replayIntroButton.classList.add('visible'); // Ensure the replay button is visible with animation
 		const sections = mainContent.querySelectorAll('section');
 		let expandedSections = [];
 
@@ -102,4 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	} else {
 		setTimeout(displayNextMessage, 2000); // Initial delay before displaying the first message
 	}
+
+	replayIntroButton.addEventListener('click', () => {
+		localStorage.setItem('skipIntro', 'false'); // Set skipIntro to false in localStorage
+		location.reload(); // Reload the page
+	});
 });

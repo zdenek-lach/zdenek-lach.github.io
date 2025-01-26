@@ -133,18 +133,18 @@ body.intro-done {
 	animation: fadeInUp 0.5s forwards;
 }
 
-#text-container {
+.text-container {
 	text-align: center;
 	width: auto; /* Keep this line to move the header back to the left */
 }
 
-#text {
+.text {
 	font-size: 2em;
 	transition: opacity 0.5s ease-in-out; /* Smooth transition for text changes */
 	opacity: 1;
 }
 
-#header {
+.header {
 	background-color: var(--header-bg-color); /* Mocha surface color */
 	color: var(--header-text-color); /* Mocha text color */
 	padding: 20px;
@@ -167,12 +167,12 @@ body.intro-done {
 	transform: translateY(-20px); /* Initial position for animation */
 }
 
-#header.visible {
+.header.visible {
 	opacity: 1; /* Show the header */
 	transform: translateY(0); /* Final position for animation */
 }
 
-#header img#profile-picture {
+.header img.profile-picture {
 	/* Apply the animated-border class */
 	border-radius: 50%;
 	border: 0.2rem solid transparent; /* Set border to transparent */
@@ -191,7 +191,7 @@ body.intro-done {
 	animation-play-state: running;
 }
 
-#header img {
+.header img {
 	border-radius: 50%; /* Keep the rounding on the profile picture */
 	width: 150px;
 	height: 150px;
@@ -207,14 +207,14 @@ header p {
 	margin: 5px 0;
 }
 
-#contact {
+.contact {
 	display: flex;
 	justify-content: center;
 	gap: 10px;
 	flex-wrap: wrap; /* Ensure icons stay within the page */
 }
 
-#contact a {
+.contact a {
 	color: var(--contact-link-color); /* Mocha accent color */
 	text-decoration: none;
 	margin: 10px 10px;
@@ -223,11 +223,11 @@ header p {
 	flex-direction: column; /* Align links neatly in line */
 }
 
-#contact a:hover {
+.contact a:hover {
 	text-decoration: underline;
 }
 
-#contact a img {
+.contact a img {
 	width: 48px; /* Make the contact icons bigger */
 	height: 48px; /* Make the contact icons bigger */
 	margin-bottom: 5px; /* Adjust margin to align links neatly */
@@ -235,7 +235,7 @@ header p {
 	color: var(--contact-icon-color); /* Mocha icon color */
 }
 
-#main-content {
+.main-content {
 	width: 40%; /* Set a fixed width for the content sections */
 	margin: 20px; /* Add margin to ensure content doesn't touch the top and bottom */
 	display: flex;
@@ -246,7 +246,7 @@ header p {
 	transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for animation */
 }
 
-#main-content.visible {
+.main-content.visible {
 	opacity: 1; /* Show the main content */
 	transform: translateY(0); /* Final position for animation */
 }
@@ -300,7 +300,7 @@ ul li strong {
 	width: 150px;
 }
 
-#about-me {
+.about-me {
 	padding: 20px; /* Add padding to match other sections */
 	background-color: var(--section-bg-color); /* Mocha surface color */
 	border-radius: 8px; /* Rounded corners */
@@ -316,14 +316,14 @@ ul li strong {
 		overflow: auto; /* Re-enable scrolling */
 	}
 
-	#header {
+	.header {
 		width: 85%; /* Make the header the same width as the info items */
 		height: auto; /* Allow header to expand with content */
 		margin: 0; /* Remove margin */
 		padding: 10px; /* Adjust padding */
 	}
 
-	#header img {
+	.header img {
 		width: 100px; /* Smaller profile picture */
 		height: 100px; /* Smaller profile picture */
 	}
@@ -336,17 +336,17 @@ ul li strong {
 		font-size: 1em; /* Smaller font size */
 	}
 
-	#contact {
+	.contact {
 		flex-direction: row; /* Align icons horizontally */
 		gap: 5px; /* Smaller gap */
 	}
 
-	#contact a img {
+	.contact a img {
 		width: 32px; /* Smaller icons */
 		height: 32px; /* Smaller icons */
 	}
 
-	#main-content {
+	.main-content {
 		width: 90%; /* Full width for main content */
 		margin: 10px 0; /* Adjust margin */
 	}
@@ -363,13 +363,13 @@ ul li strong {
 		width: auto; /* Allow strong elements to expand */
 	}
 
-	#custom-download-button {
+	.custom-download-button {
 		width: 100%; /* Full width for download button */
 		padding: 10px; /* Adjust padding */
 	}
 }
 
-#header-buttons {
+.header-buttons {
 	display: flex;
 	gap: 10px;
 	margin-top: 20px;
@@ -422,7 +422,7 @@ ul li strong {
 	left: 35px; /* Move the circle to the right */
 }
 
-#custom-download-button {
+.custom-download-button {
 	background-color: var(--download-button-bg-color); /* Mocha button color */
 	color: var(--header-text-color); /* Mocha text color */
 	border: none;
@@ -437,8 +437,34 @@ ul li strong {
 	text-align: center; /* Center the text */
 }
 
-#custom-download-button:hover {
-	background-color: var(
-		--download-button-hover-bg-color
-	); /* Mocha hover color */
+.custom-download-button:hover {
+	background-color: var(--download-button-hover-bg-color);
+}
+.replay-intro-button {
+	background-color: var(--download-button-bg-color); /* Mocha button color */
+	color: var(--header-text-color); /* Mocha text color */
+	border: none;
+	width: 1.8rem;
+	height: 1.8rem;
+	padding: 10px 20px;
+	border-radius: 0.5rem; /* Rounded corners */
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out, opacity 0.5s ease-in-out; /* Add transition for opacity */
+	text-decoration: none; /* Remove underline from link */
+	display: inline-block; /* Ensure the link behaves like a button */
+	text-align: center; /* Center the text */
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	opacity: 0; /* Initially hidden */
+}
+.replay-intro-button.visible {
+	opacity: 1; /* Show the button */
+}
+.replay-intro-button:hover {
+	background-color: var(--download-button-hover-bg-color);
+}
+.replay-intro-button img {
+	width: 1.8rem;
+	height: 1.8rem;
 }
