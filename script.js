@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		'oh?',
 		'hi!',
 		'..',
-		'um..',
 		"so.. you're looking for more information about me?",
 		'okay, here you go..',
 	];
@@ -50,30 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
 		mainContent.classList.add('visible'); // Ensure the main content is visible with animation
 		const sections = mainContent.querySelectorAll('section');
 		let expandedSections = [];
-		let maxExpandedSections;
 
-		switch (true) {
-			case screen.height <= 720 || screen.width <= 600:
-				maxExpandedSections = 1;
-				break;
-			case screen.height <= 900:
-				maxExpandedSections = 2;
-				break;
-			case screen.height <= 1080:
-				maxExpandedSections = 3;
-				break;
-			default:
-				maxExpandedSections = 5;
-				break;
-		}
+		sections.forEach((section) => {
+			section.classList.add('collapsed'); // Initially keep all sections collapsed
+		});
 
-		sections.forEach((section, index) => {
-			if (index === 0) {
-				section.classList.add('visible'); // Expand the first section by default
+		setTimeout(() => {
+			sections.forEach((section) => {
+				section.classList.add('visible'); // Open all sections at once
+				section.classList.remove('collapsed');
 				expandedSections.push(section);
-			} else {
-				section.classList.add('collapsed'); // Ensure other sections are collapsed
-			}
+			});
+
+			setTimeout(() => {
+				let delay = 0;
+				for (let i = expandedSections.length - 1; i >= 0; i--) {
+					setTimeout(() => {
+						if (i !== 0) {
+							expandedSections[i].classList.remove('visible');
+							expandedSections[i].classList.add('collapsed');
+						}
+					}, delay);
+					delay += 5; // 0.5s intervals
+				}
+			}, 1000); // Wait 2 seconds before starting to collapse sections
+		}, 1000); // Wait 0.5 seconds before opening all sections
+
+		sections.forEach((section) => {
 			const title = section.querySelector('h2');
 			title.addEventListener('click', () => {
 				if (section.classList.contains('visible')) {
@@ -81,11 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
 					section.classList.add('collapsed');
 					expandedSections = expandedSections.filter((s) => s !== section);
 				} else {
-					if (expandedSections.length >= maxExpandedSections) {
-						const oldestSection = expandedSections.shift();
-						oldestSection.classList.remove('visible');
-						oldestSection.classList.add('collapsed');
-					}
 					section.classList.add('visible');
 					section.classList.remove('collapsed');
 					expandedSections.push(section);
