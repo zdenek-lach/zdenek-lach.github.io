@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const intro_messages = [
 		'oh?',
 		'hi!',
-		'..',
+		'...',
 		"so.. you're looking for more information about me?",
 		'okay, here you go..',
 	];
