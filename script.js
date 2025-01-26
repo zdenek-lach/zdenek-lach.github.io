@@ -53,46 +53,48 @@ document.addEventListener('DOMContentLoaded', () => {
 		replayIntroButton.classList.add('visible'); // Ensure the replay button is visible with animation
 		const sections = mainContent.querySelectorAll('section');
 		let expandedSections = [];
+		let maxExpandedSections;
 
-		sections.forEach((section) => {
-			section.classList.add('collapsed'); // Initially keep all sections collapsed
-		});
+		switch (true) {
+			case screen.height <= 720 || screen.width <= 600:
+				maxExpandedSections = 1;
+				break;
+			case screen.height <= 900:
+				maxExpandedSections = 2;
+				break;
+			case screen.height <= 1080:
+				maxExpandedSections = 3;
+				break;
+			default:
+				maxExpandedSections = 5;
+				break;
+		}
 
-		setTimeout(() => {
-			sections.forEach((section) => {
-				section.classList.add('visible'); // Open all sections at once
-				section.classList.remove('collapsed');
-				section.classList.add('animated-border'); // Add animated border to expanded sections
+		sections.forEach((section, index) => {
+			if (index === 0) {
+				section.classList.add('visible'); // Expand the first section by default
+				section.classList.add('animated-border'); // Expand the first section by default
 				expandedSections.push(section);
-			});
-
-			setTimeout(() => {
-				let delay = 0;
-				for (let i = expandedSections.length - 1; i >= 0; i--) {
-					setTimeout(() => {
-						if (i !== 0) {
-							expandedSections[i].classList.remove('visible');
-							expandedSections[i].classList.add('collapsed');
-							expandedSections[i].classList.remove('animated-border'); // Remove animated border from collapsed sections
-						}
-					}, delay);
-					delay += 5; // 0.5s intervals
-				}
-			}, 1000); // Wait 2 seconds before starting to collapse sections
-		}, 1000); // Wait 0.5 seconds before opening all sections
-
-		sections.forEach((section) => {
+			} else {
+				section.classList.add('collapsed'); // Ensure other sections are collapsed
+			}
 			const title = section.querySelector('h2');
 			title.addEventListener('click', () => {
 				if (section.classList.contains('visible')) {
 					section.classList.remove('visible');
+					section.classList.remove('animated-border');
 					section.classList.add('collapsed');
-					section.classList.remove('animated-border'); // Remove animated border from collapsed sections
 					expandedSections = expandedSections.filter((s) => s !== section);
 				} else {
+					if (expandedSections.length >= maxExpandedSections) {
+						const oldestSection = expandedSections.shift();
+						oldestSection.classList.remove('visible');
+						oldestSection.classList.remove('animated-border');
+						oldestSection.classList.add('collapsed');
+					}
 					section.classList.add('visible');
+					section.classList.add('animated-border');
 					section.classList.remove('collapsed');
-					section.classList.add('animated-border'); // Add animated border to expanded sections
 					expandedSections.push(section);
 				}
 			});

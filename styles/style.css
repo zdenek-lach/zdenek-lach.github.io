@@ -306,6 +306,7 @@ ul li strong {
 	border-radius: 8px; /* Rounded corners */
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to match other sections */
 	margin: 20px 0; /* Add margin to match other sections */
+	color: var(--text-color); /* Ensure text color matches other sections */
 }
 
 @media (max-width: 600px) {
