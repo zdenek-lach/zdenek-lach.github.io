@@ -1,6 +1,61 @@
+:root {
+	--background-color: #000;
+	--text-color: #cdd6f4;
+	--gradient-start: #000;
+	--gradient-end: #1e1e2e;
+	--header-bg-color: #45475a;
+	--header-text-color: #cdd6f4;
+	--border-color: #ff79c6;
+	--border-color-alt: #bd93f9;
+	--contact-icon-color: #11111b;
+	--contact-link-color: #89b4fa;
+	--section-bg-color: #313244;
+	--section-hover-bg-color: #5a5c6a;
+	--button-bg-color: #45475a;
+	--button-hover-bg-color: #5a5c6a;
+	--switch-bg-color: #45475a;
+	--switch-circle-color: #89b4fa;
+	--download-button-bg-color: #313244;
+	--download-button-hover-bg-color: #1e1e2e;
+	--bg-angle: 0deg;
+	--border-gradient-start: var(--border-color);
+	--border-gradient-middle: var(--border-color-alt);
+	--border-gradient-end: var(--border-color);
+}
+
+/**
+ * `@property` is required for the animation to work.
+ * Without it, the angle values won’t interpolate properly.
+ *
+ * @see https://dev.to/afif/we-can-finally-animate-css-gradient-kdk
+ */
+@property --bg-angle {
+	inherits: false;
+	initial-value: 0deg;
+	syntax: '<angle>';
+}
+
+.animated-border {
+	border-radius: 8px; /* Adjusted for sections */
+	border: 0.1rem solid transparent; /* Set border to transparent */
+	background: linear-gradient(var(--background-color), var(--background-color))
+			padding-box,
+		conic-gradient(
+				from var(--bg-angle),
+				var(--border-gradient-start),
+				var(--border-gradient-middle),
+				var(--border-gradient-end)
+			)
+			border-box;
+	background-origin: border-box;
+	background-clip: content-box, border-box; /* Clip the background to show the gradient border */
+	animation: spin 5s infinite linear paused; /* Add smooth spin animation to the border */
+	animation-play-state: running;
+}
+
 body {
-	background-color: #000; /* Initial background color */
-	color: #cdd6f4; /* Text color */
+	background-color: var(--background-color); /* Initial background color */
+	color: var(--text-color); /* Text color */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -15,8 +70,8 @@ body {
 body.intro-done {
 	background-image: linear-gradient(
 		to bottom,
-		#000,
-		#1e1e2e
+		var(--gradient-start),
+		var(--gradient-end)
 	); /* Gradient background */
 	animation: fadeIn 1s ease-in-out; /* Add fade-in animation */
 }
@@ -41,22 +96,35 @@ body.intro-done {
 }
 
 @keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
 	to {
-		transform: rotate(360deg);
+		--bg-angle: 360deg;
 	}
 }
 
 @keyframes spin-border {
 	from {
-		background-image: linear-gradient(#000, #000),
-			linear-gradient(45deg, #ff79c6, #bd93f9, #ff79c6);
+		background-image: linear-gradient(
+				var(--background-color),
+				var(--background-color)
+			),
+			linear-gradient(
+				45deg,
+				var(--border-gradient-start),
+				var(--border-gradient-middle),
+				var(--border-gradient-end)
+			);
 	}
 	to {
-		background-image: linear-gradient(#000, #000),
-			linear-gradient(45deg, #bd93f9, #ff79c6, #bd93f9);
+		background-image: linear-gradient(
+				var(--background-color),
+				var(--background-color)
+			),
+			linear-gradient(
+				45deg,
+				var(--border-gradient-middle),
+				var(--border-gradient-end),
+				var(--border-gradient-middle)
+			);
 	}
 }
 
@@ -77,8 +145,8 @@ body.intro-done {
 }
 
 #header {
-	background-color: #45475a; /* Mocha surface color */
-	color: #cdd6f4; /* Mocha text color */
+	background-color: var(--header-bg-color); /* Mocha surface color */
+	color: var(--header-text-color); /* Mocha text color */
 	padding: 20px;
 	text-align: center;
 	overflow: hidden;
@@ -105,13 +173,22 @@ body.intro-done {
 }
 
 #header img#profile-picture {
+	/* Apply the animated-border class */
 	border-radius: 50%;
 	border: 0.2rem solid transparent; /* Set border to transparent */
-	background-image: linear-gradient(#000, #000),
-		linear-gradient(45deg, #ff79c6, #bd93f9, #ff79c6); /* Add gradient */
+	background: linear-gradient(var(--background-color), var(--background-color))
+			padding-box,
+		conic-gradient(
+				from var(--bg-angle),
+				var(--border-gradient-start),
+				var(--border-gradient-middle),
+				var(--border-gradient-end)
+			)
+			border-box;
 	background-origin: border-box;
 	background-clip: content-box, border-box; /* Clip the background to show the gradient border */
-	animation: spin-border 3s ease-in infinite; /* Add smooth spin animation to the border */
+	animation: spin 5s infinite linear paused; /* Add smooth spin animation to the border */
+	animation-play-state: running;
 }
 
 #header img {
@@ -138,7 +215,7 @@ header p {
 }
 
 #contact a {
-	color: #89b4fa; /* Mocha accent color */
+	color: var(--contact-link-color); /* Mocha accent color */
 	text-decoration: none;
 	margin: 10px 10px;
 	display: flex;
@@ -155,7 +232,7 @@ header p {
 	height: 48px; /* Make the contact icons bigger */
 	margin-bottom: 5px; /* Adjust margin to align links neatly */
 	border-radius: 0; /* Remove rounding on the contact icons */
-	color: #11111b; /* Mocha icon color */
+	color: var(--contact-icon-color); /* Mocha icon color */
 }
 
 #main-content {
@@ -177,7 +254,7 @@ header p {
 section {
 	padding: 0; /* Remove padding to make the title span into the border */
 	margin: 20px 0; /* Adjust margin to leave space on the sides */
-	background-color: #313244; /* Mocha surface color */
+	background-color: var(--section-bg-color); /* Mocha surface color */
 	border-radius: 8px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	opacity: 1; /* Ensure the title does not fade away */
@@ -194,7 +271,7 @@ section.visible {
 section h2 {
 	margin: 0; /* Remove margin to make the title span into the border */
 	cursor: pointer; /* Indicate that the title is clickable */
-	background-color: #45475a; /* Mocha initial background color */
+	background-color: var(--header-bg-color); /* Mocha initial background color */
 	padding: 10px;
 	border-top-left-radius: 8px; /* Rounded corners for the top */
 	border-top-right-radius: 8px; /* Rounded corners for the top */
@@ -202,7 +279,7 @@ section h2 {
 }
 
 section h2:hover {
-	background-color: #5a5c6a; /* Mocha hover shade */
+	background-color: var(--section-hover-bg-color); /* Mocha hover shade */
 }
 
 section.collapsed {
@@ -225,7 +302,7 @@ ul li strong {
 
 #about-me {
 	padding: 20px; /* Add padding to match other sections */
-	background-color: #313244; /* Mocha surface color */
+	background-color: var(--section-bg-color); /* Mocha surface color */
 	border-radius: 8px; /* Rounded corners */
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to match other sections */
 	margin: 20px 0; /* Add margin to match other sections */
@@ -299,8 +376,8 @@ ul li strong {
 }
 
 .button {
-	background-color: #45475a; /* Mocha button color */
-	color: #cdd6f4; /* Mocha text color */
+	background-color: var(--button-bg-color); /* Mocha button color */
+	color: var(--header-text-color); /* Mocha text color */
 	border: none;
 	padding: 10px 20px;
 	border-radius: 8px; /* Rounded corners */
@@ -311,14 +388,14 @@ ul li strong {
 }
 
 .button:hover {
-	background-color: #5a5c6a; /* Mocha hover color */
+	background-color: var(--button-hover-bg-color); /* Mocha hover color */
 }
 
 .switch {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-	background-color: #45475a; /* Mocha switch color */
+	background-color: var(--switch-bg-color); /* Mocha switch color */
 	border-radius: 20px;
 	padding: 5px;
 	width: 60px;
@@ -332,7 +409,7 @@ ul li strong {
 }
 
 .switch-label {
-	background-color: #89b4fa; /* Mocha circle color */
+	background-color: var(--switch-circle-color); /* Mocha circle color */
 	border-radius: 50%;
 	width: 20px;
 	height: 20px;
@@ -346,8 +423,8 @@ ul li strong {
 }
 
 #custom-download-button {
-	background-color: #313244; /* Mocha button color */
-	color: #cdd6f4; /* Mocha text color */
+	background-color: var(--download-button-bg-color); /* Mocha button color */
+	color: var(--header-text-color); /* Mocha text color */
 	border: none;
 	width: 9rem;
 	height: 1rem;
@@ -361,5 +438,7 @@ ul li strong {
 }
 
 #custom-download-button:hover {
-	background-color: #1e1e2e; /* Mocha hover color */
+	background-color: var(
+		--download-button-hover-bg-color
+	); /* Mocha hover color */
 }

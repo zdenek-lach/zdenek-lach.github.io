@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			sections.forEach((section) => {
 				section.classList.add('visible'); // Open all sections at once
 				section.classList.remove('collapsed');
+				section.classList.add('animated-border'); // Add animated border to expanded sections
 				expandedSections.push(section);
 			});
 
@@ -68,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						if (i !== 0) {
 							expandedSections[i].classList.remove('visible');
 							expandedSections[i].classList.add('collapsed');
+							expandedSections[i].classList.remove('animated-border'); // Remove animated border from collapsed sections
 						}
 					}, delay);
 					delay += 5; // 0.5s intervals
@@ -81,10 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				if (section.classList.contains('visible')) {
 					section.classList.remove('visible');
 					section.classList.add('collapsed');
+					section.classList.remove('animated-border'); // Remove animated border from collapsed sections
 					expandedSections = expandedSections.filter((s) => s !== section);
 				} else {
 					section.classList.add('visible');
 					section.classList.remove('collapsed');
+					section.classList.add('animated-border'); // Add animated border to expanded sections
 					expandedSections.push(section);
 				}
 			});
