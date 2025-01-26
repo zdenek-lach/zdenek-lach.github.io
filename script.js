@@ -49,7 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		mainContent.classList.add('visible'); // Ensure the main content is visible with animation
 		const sections = mainContent.querySelectorAll('section');
 		let expandedSections = [];
-		const maxExpandedSections = window.innerHeight < 1440 ? 3 : window.innerHeight >= 1440 ? 5 : sections.length;
+		const maxExpandedSections = screen.height <= 1080 ? 3 : 5;
+		console.log(screen.height);
+		console.log(maxExpandedSections);
 		sections.forEach((section, index) => {
 			if (index === 0) {
 				section.classList.add('visible'); // Expand the first section by default
