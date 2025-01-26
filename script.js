@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const skipIntro = true;
+	const skipIntro = false; // Set to true to skip the intro and show the content immediately
 
 	const textElement = document.getElementById('text');
 	const textContainer = document.getElementById('text-container');
@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		mainContent.classList.add('visible'); // Ensure the main content is visible with animation
 		const sections = mainContent.querySelectorAll('section');
 		let expandedSections = [];
-		const maxExpandedSections = screen.height <= 1080 ? 3 : 5;
+		const maxExpandedSections =
+			screen.height <= 720 || screen.width <= 600 ? 1 : screen.height <= 1080 ? 3 : 5;
 		console.log(screen.height);
 		console.log(maxExpandedSections);
 		sections.forEach((section, index) => {

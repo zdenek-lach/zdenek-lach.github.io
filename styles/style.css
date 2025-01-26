@@ -48,9 +48,10 @@ body.intro-done {
 	text-align: center;
 	overflow: hidden;
 	width: 300px; /* Set a fixed width for the header */
-	height: calc(
+	height: 550px;
+	/* height: calc(
 		100vh - 80px
-	); /* Expand the header from top to bottom with slight offset */
+	); Expand the header from top to bottom with slight offset */
 	margin: 20px; /* Add slight offset */
 	border-radius: 8px; /* Rounded corners */
 	display: flex;
@@ -186,13 +187,63 @@ ul li strong {
 }
 
 @media (max-width: 600px) {
+	body {
+		flex-direction: column; /* Stack elements vertically */
+		height: auto; /* Allow body to expand with content */
+		padding: 10px; /* Add padding for better spacing */
+		overflow: auto; /* Re-enable scrolling */
+	}
+
+	#header {
+		width: 85%; /* Make the header the same width as the info items */
+		height: auto; /* Allow header to expand with content */
+		margin: 0; /* Remove margin */
+		padding: 10px; /* Adjust padding */
+	}
+
+	#header img {
+		width: 100px; /* Smaller profile picture */
+		height: 100px; /* Smaller profile picture */
+	}
+
 	header h1 {
-		font-size: 2em;
+		font-size: 1.5em; /* Smaller font size */
+	}
+
+	header p {
+		font-size: 1em; /* Smaller font size */
+	}
+
+	#contact {
+		flex-direction: row; /* Align icons horizontally */
+		gap: 5px; /* Smaller gap */
+	}
+
+	#contact a img {
+		width: 32px; /* Smaller icons */
+		height: 32px; /* Smaller icons */
+	}
+
+	#main-content {
+		width: 90%; /* Full width for main content */
+		margin: 10px 0; /* Adjust margin */
+	}
+
+	section {
+		margin: 10px 0; /* Adjust margin */
+	}
+
+	ul {
+		padding: 10px; /* Adjust padding */
 	}
 
 	ul li strong {
-		display: block;
-		width: auto;
+		width: auto; /* Allow strong elements to expand */
+	}
+
+	#custom-download-button {
+		width: 100%; /* Full width for download button */
+		padding: 10px; /* Adjust padding */
 	}
 }
 
