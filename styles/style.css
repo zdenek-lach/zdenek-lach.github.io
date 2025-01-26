@@ -40,6 +40,26 @@ body.intro-done {
 	}
 }
 
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin-border {
+	from {
+		background-image: linear-gradient(#000, #000),
+			linear-gradient(45deg, #ff79c6, #bd93f9, #ff79c6);
+	}
+	to {
+		background-image: linear-gradient(#000, #000),
+			linear-gradient(45deg, #bd93f9, #ff79c6, #bd93f9);
+	}
+}
+
 .list-item {
 	opacity: 0;
 	animation: fadeInUp 0.5s forwards;
@@ -82,6 +102,16 @@ body.intro-done {
 #header.visible {
 	opacity: 1; /* Show the header */
 	transform: translateY(0); /* Final position for animation */
+}
+
+#header img#profile-picture {
+	border-radius: 50%;
+	border: 0.2rem solid transparent; /* Set border to transparent */
+	background-image: linear-gradient(#000, #000),
+		linear-gradient(45deg, #ff79c6, #bd93f9, #ff79c6); /* Add gradient */
+	background-origin: border-box;
+	background-clip: content-box, border-box; /* Clip the background to show the gradient border */
+	animation: spin-border 3s ease-in infinite; /* Add smooth spin animation to the border */
 }
 
 #header img {
