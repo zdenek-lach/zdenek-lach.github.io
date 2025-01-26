@@ -265,7 +265,7 @@ section {
 }
 
 section.visible {
-	max-height: 300px; /* Limit the maximum height of expanded sections */
+	max-height: 400px; /* Increase the maximum height of expanded sections */
 }
 
 section h2 {

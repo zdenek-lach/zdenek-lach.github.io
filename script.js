@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					sections[0].classList.add('visible');
 					sections[0].classList.add('animated-border');
 					sections[0].classList.remove('collapsed');
+					expandedSections.push(sections[0]); // Add the first section to expandedSections
 				}, sections.length * 50);
 			}, 1000); // Delay before starting to close sections
 		}, 1000); // Delay before opening all sections
