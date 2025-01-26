@@ -37,7 +37,7 @@
 
 .animated-border {
 	border-radius: 8px; /* Adjusted for sections */
-	border: 0.1rem solid transparent; /* Set border to transparent */
+	border: 0.3rem solid transparent; /* Set border to transparent */
 	background: linear-gradient(var(--background-color), var(--background-color))
 			padding-box,
 		conic-gradient(
@@ -378,7 +378,7 @@ ul li strong {
 		height: 100vh; /* Full viewport height */
 		width: 100%; /* Full viewport width */
 	}
-    
+
 	.replay-intro-button {
 		width: 1.2rem; /* Smaller button */
 		height: 1.2rem; /* Smaller button */

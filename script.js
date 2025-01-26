@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+	console.log('DOM fully loaded and parsed');
 	let skipIntro = localStorage.getItem('skipIntro') === 'true'; // Retrieve skipIntro from localStorage
+	console.log('skipIntro:', skipIntro);
 
 	const textElement = document.querySelector('.text');
 	const textContainer = document.querySelector('.text-container');
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function showContent() {
+		console.log('Showing content');
 		document.body.classList.add('intro-done'); // Change background color and trigger fade-in
 		header.style.display = 'flex'; // Show the header
 		header.classList.add('visible'); // Ensure the header is visible
@@ -71,13 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		sections.forEach((section, index) => {
-			if (index === 0) {
-				section.classList.add('visible'); // Expand the first section by default
-				section.classList.add('animated-border'); // Expand the first section by default
-				expandedSections.push(section);
-			} else {
-				section.classList.add('collapsed'); // Ensure other sections are collapsed
-			}
+			section.classList.add('collapsed'); // Ensure all sections are collapsed initially
 			const title = section.querySelector('h2');
 			title.addEventListener('click', () => {
 				if (section.classList.contains('visible')) {
@@ -99,17 +96,47 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		});
+
+		// Animation to open all sections and then gradually close them
+		setTimeout(() => {
+			console.log('Opening all sections');
+			sections.forEach((section) => {
+				section.classList.add('visible');
+				section.classList.add('animated-border');
+				section.classList.remove('collapsed');
+			});
+			setTimeout(() => {
+				console.log('Closing sections gradually');
+				for (let i = sections.length - 1; i >= 0; i--) {
+					setTimeout(() => {
+						sections[i].classList.remove('visible');
+						sections[i].classList.remove('animated-border');
+						sections[i].classList.add('collapsed');
+					}, (sections.length - 1 - i) * 50);
+				}
+				setTimeout(() => {
+					// Keep the first section open
+					sections[0].classList.add('visible');
+					sections[0].classList.add('animated-border');
+					sections[0].classList.remove('collapsed');
+				}, sections.length * 50);
+			}, 1000); // Delay before starting to close sections
+		}, 1000); // Delay before opening all sections
+
 		textContainer.style.display = 'none'; // Hide the text container
 		localStorage.setItem('skipIntro', 'true'); // Set skipIntro to true in localStorage
 	}
 
 	if (skipIntro) {
+		console.log('Skipping intro');
 		showContent(); // Skip the intro and show the content immediately
 	} else {
+		console.log('Starting intro');
 		setTimeout(displayNextMessage, 2000); // Initial delay before displaying the first message
 	}
 
 	replayIntroButton.addEventListener('click', () => {
+		console.log('Replay intro button clicked');
 		localStorage.setItem('skipIntro', 'false'); // Set skipIntro to false in localStorage
 		location.reload(); // Reload the page
 	});
