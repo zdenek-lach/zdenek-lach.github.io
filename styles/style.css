@@ -36,7 +36,7 @@
 }
 
 .animated-border {
-	border-radius: 8px; /* Adjusted for sections */
+	border-radius: 0.5rem; /* Adjusted for sections */
 	border: 0.3rem solid transparent; /* Set border to transparent */
 	background: linear-gradient(var(--background-color), var(--background-color))
 			padding-box,
@@ -156,7 +156,7 @@ body.intro-done {
 		100vh - 80px
 	); Expand the header from top to bottom with slight offset */
 	margin: 20px; /* Add slight offset */
-	border-radius: 8px; /* Rounded corners */
+	border-radius: 0.5rem; /* Rounded corners */
 	display: flex;
 	flex-direction: column;
 	justify-content: center; /* Center the text vertically */
@@ -174,7 +174,7 @@ body.intro-done {
 
 .header img.profile-picture {
 	/* Apply the animated-border class */
-	border-radius: 50%;
+	border-radius: 0.5rem; /*reflects how round is the profile pic*/
 	border: 0.2rem solid transparent; /* Set border to transparent */
 	background: linear-gradient(var(--background-color), var(--background-color))
 			padding-box,
@@ -192,7 +192,7 @@ body.intro-done {
 }
 
 .header img {
-	border-radius: 50%; /* Keep the rounding on the profile picture */
+	border-radius: 0.5rem; /* Keep the rounding on the profile picture */
 	width: 150px;
 	height: 150px;
 	margin-bottom: 20px;
@@ -255,7 +255,6 @@ section {
 	padding: 0; /* Remove padding to make the title span into the border */
 	margin: 20px 0; /* Adjust margin to leave space on the sides */
 	background-color: var(--section-bg-color); /* Mocha surface color */
-	border-radius: 8px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	opacity: 1; /* Ensure the title does not fade away */
 	transform: translateY(0); /* Ensure the title does not fade away */
@@ -266,6 +265,7 @@ section {
 
 section.visible {
 	max-height: 400px; /* Increase the maximum height of expanded sections */
+	border-radius: 0.5rem;
 }
 
 section h2 {
@@ -273,6 +273,7 @@ section h2 {
 	cursor: pointer; /* Indicate that the title is clickable */
 	background-color: var(--header-bg-color); /* Mocha initial background color */
 	padding: 10px;
+	border-radius: 0.2rem;
 	border-top-left-radius: 8px; /* Rounded corners for the top */
 	border-top-right-radius: 8px; /* Rounded corners for the top */
 	transition: background-color 0.3s ease-in-out;
@@ -284,6 +285,9 @@ section h2:hover {
 
 section.collapsed {
 	max-height: 50px; /* Ensure the title is always visible when minimized */
+	border-top-left-radius: 0; /* Remove top-left border radius */
+	border-top-right-radius: 0; /* Remove top-right border radius */
+	border-radius: 0.2rem;
 }
 
 ul {
@@ -303,7 +307,7 @@ ul li strong {
 .about-me {
 	padding: 20px; /* Add padding to match other sections */
 	background-color: var(--section-bg-color); /* Mocha surface color */
-	border-radius: 8px; /* Rounded corners */
+	border-radius: 0.5rem; /* Rounded corners */
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to match other sections */
 	margin: 20px 0; /* Add margin to match other sections */
 	color: var(--text-color); /* Ensure text color matches other sections */
@@ -404,7 +408,7 @@ ul li strong {
 	color: var(--header-text-color); /* Mocha text color */
 	border: none;
 	padding: 10px 20px;
-	border-radius: 8px; /* Rounded corners */
+	border-radius: 0.5rem; /* Rounded corners */
 	cursor: pointer;
 	transition: background-color 0.3s ease-in-out;
 	text-decoration: none; /* Remove underline from link */
@@ -420,7 +424,7 @@ ul li strong {
 	align-items: center;
 	cursor: pointer;
 	background-color: var(--switch-bg-color); /* Mocha switch color */
-	border-radius: 20px;
+	border-radius: 0.5rem;
 	padding: 5px;
 	width: 60px;
 	height: 30px;
@@ -434,7 +438,7 @@ ul li strong {
 
 .switch-label {
 	background-color: var(--switch-circle-color); /* Mocha circle color */
-	border-radius: 50%;
+	border-radius: 0.5rem;
 	width: 20px;
 	height: 20px;
 	position: absolute;
@@ -491,4 +495,22 @@ ul li strong {
 .replay-intro-button img {
 	width: 1.8rem;
 	height: 1.8rem;
+}
+
+.info-title {
+	font-weight: bold;
+	width: 150px;
+	text-align: left;
+}
+
+.info-content {
+	flex: 1;
+	text-align: left;
+	margin-left: 10px;
+}
+
+.content-container {
+	display: flex;
+	align-items: center;
+	justify-content: inherit;
 }
