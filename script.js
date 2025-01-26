@@ -113,4 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('skipIntro', 'false'); // Set skipIntro to false in localStorage
 		location.reload(); // Reload the page
 	});
+
+	window.addEventListener('scroll', () => {
+		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			replayIntroButton.classList.add('visible'); // Show the button when scrolled to the bottom
+		} else {
+			replayIntroButton.classList.remove('visible'); // Hide the button when not at the bottom
+		}
+	});
 });

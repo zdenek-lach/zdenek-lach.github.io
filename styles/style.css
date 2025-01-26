@@ -315,6 +315,8 @@ ul li strong {
 		height: auto; /* Allow body to expand with content */
 		padding: 10px; /* Add padding for better spacing */
 		overflow: auto; /* Re-enable scrolling */
+		justify-content: center; /* Center the content vertically */
+		align-items: center; /* Center the content horizontally */
 	}
 
 	.header {
@@ -367,6 +369,27 @@ ul li strong {
 	.custom-download-button {
 		width: 100%; /* Full width for download button */
 		padding: 10px; /* Adjust padding */
+	}
+
+	.text-container {
+		display: flex;
+		justify-content: center; /* Center the text horizontally */
+		align-items: center; /* Center the text vertically */
+		height: 100vh; /* Full viewport height */
+		width: 100%; /* Full viewport width */
+	}
+    
+	.replay-intro-button {
+		width: 1.2rem; /* Smaller button */
+		height: 1.2rem; /* Smaller button */
+		padding: 5px 10px; /* Adjust padding */
+		bottom: 10px; /* Adjust position */
+		right: 10px; /* Adjust position */
+	}
+
+	.replay-intro-button img {
+		width: 1.2rem; /* Smaller icon */
+		height: 1.2rem; /* Smaller icon */
 	}
 }
 
