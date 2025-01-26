@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const skipIntro = true; // Set to true to skip the intro and show the content immediately
+	let skipIntro = localStorage.getItem('skipIntro') === 'true'; // Retrieve skipIntro from localStorage
 
 	const textElement = document.getElementById('text');
 	const textContainer = document.getElementById('text-container');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			case screen.height <= 720 || screen.width <= 600:
 				maxExpandedSections = 1;
 				break;
-                case screen.height <= 900:
+			case screen.height <= 900:
 				maxExpandedSections = 2;
 				break;
 			case screen.height <= 1080:
@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 		textContainer.style.display = 'none'; // Hide the text container
+		localStorage.setItem('skipIntro', 'true'); // Set skipIntro to true in localStorage
 	}
 
 	if (skipIntro) {
