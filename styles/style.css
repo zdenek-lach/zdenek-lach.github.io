@@ -236,7 +236,7 @@ header p {
 }
 
 .main-content {
-	width: 40%; /* Set a fixed width for the content sections */
+	width: 30%; /* Default width for larger screens */
 	margin: 20px; /* Add margin to ensure content doesn't touch the top and bottom */
 	display: flex;
 	flex-direction: column;
@@ -244,6 +244,19 @@ header p {
 	opacity: 0; /* Initially hidden */
 	transform: translateY(20px); /* Initial position for animation */
 	transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for animation */
+}
+
+@media (max-width: 1920px) {
+	.main-content {
+		width: 40%; /* Adjust width for 1080p screens */
+	}
+}
+
+@media (max-width: 600px) {
+	.main-content {
+		width: 90%; /* Full width for smaller screens */
+		margin: 10px 0; /* Adjust margin */
+	}
 }
 
 .main-content.visible {
@@ -254,7 +267,7 @@ header p {
 section {
 	padding: 0; /* Remove padding to make the title span into the border */
 	margin: 20px 0; /* Adjust margin to leave space on the sides */
-	background-color: var(--section-bg-color); /* Mocha surface color */
+	background-color: var(--background-color); /* Set section background to black */
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	opacity: 1; /* Ensure the title does not fade away */
 	transform: translateY(0); /* Ensure the title does not fade away */
@@ -266,6 +279,7 @@ section {
 section.visible {
 	max-height: 400px; /* Increase the maximum height of expanded sections */
 	border-radius: 0.5rem;
+	background-color: var(--background-color); /* Ensure visible sections have black background */
 }
 
 section h2 {
@@ -288,6 +302,7 @@ section.collapsed {
 	border-top-left-radius: 0; /* Remove top-left border radius */
 	border-top-right-radius: 0; /* Remove top-right border radius */
 	border-radius: 0.2rem;
+	background-color: var(--background-color); /* Ensure collapsed sections have black background */
 }
 
 ul {
