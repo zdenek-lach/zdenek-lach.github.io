@@ -17,12 +17,4 @@ Welcome to my personal résumé webpage. This webpage provides an overview of my
 - **CSS**: For styling and animations.
 - **JavaScript**: For interactivity and animations.
 
-## Contact
-
-Feel free to reach out to me through any of the contact links provided on the webpage.
-
-- **LinkedIn**: [Zdeněk Lach](https://www.linkedin.com/in/zdeneklach/)
-- **Email**: [lach.zdenek@gmail.com](mailto:lach.zdenek@gmail.com)
-- **GitHub**: [zdenek-lach](https://github.com/zdenek-lach)
-
 Thank you for visiting my résumé webpage!

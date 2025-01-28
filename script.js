@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		const sections = mainContent.querySelectorAll('section');
 		let expandedSections = [];
 		let maxExpandedSections;
-
 		switch (true) {
 			case screen.height <= 720 || screen.width <= 600:
 				maxExpandedSections = 1;
@@ -68,34 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			case screen.height <= 1080:
 				maxExpandedSections = 3;
 				break;
-			default:
+			case screen.height <= 1440:
 				maxExpandedSections = 5;
 				break;
+			default:
+				maxExpandedSections = 6;
+				break;
 		}
-
-		sections.forEach((section, index) => {
-			section.classList.add('collapsed'); // Ensure all sections are collapsed initially
-			const title = section.querySelector('h2');
-			title.addEventListener('click', () => {
-				if (section.classList.contains('visible')) {
-					section.classList.remove('visible');
-					section.classList.remove('animated-border');
-					section.classList.add('collapsed');
-					expandedSections = expandedSections.filter((s) => s !== section);
-				} else {
-					if (expandedSections.length >= maxExpandedSections) {
-						const oldestSection = expandedSections.shift();
-						oldestSection.classList.remove('visible');
-						oldestSection.classList.remove('animated-border');
-						oldestSection.classList.add('collapsed');
-					}
-					section.classList.add('visible');
-					section.classList.add('animated-border');
-					section.classList.remove('collapsed');
-					expandedSections.push(section);
-				}
-			});
-		});
+		
 
 		// Animation to open all sections and then gradually close them
 		setTimeout(() => {
@@ -123,7 +102,33 @@ document.addEventListener('DOMContentLoaded', () => {
 				}, sections.length * 50);
 			}, 1000); // Delay before starting to close sections
 		}, 1000); // Delay before opening all sections
-
+		
+		console.log("Max allowed sections: " + maxExpandedSections)
+		sections.forEach((section, index) => {
+			section.classList.add('collapsed'); // Ensure all sections are collapsed initially
+			const title = section.querySelector('h2');
+			title.addEventListener('click', () => {
+				console.log(`clicked: ${title.textContent}`);
+				if (section.classList.contains('visible')) {
+					section.classList.remove('visible');
+					section.classList.remove('animated-border');
+					section.classList.add('collapsed');
+					expandedSections = expandedSections.filter((s) => s !== section);
+				} else {
+					if (expandedSections.length >= maxExpandedSections) {
+						console.log('reached the limit, closing old section');
+						const oldestSection = expandedSections.shift();
+						oldestSection.classList.remove('visible');
+						oldestSection.classList.remove('animated-border');
+						oldestSection.classList.add('collapsed');
+					}
+					section.classList.add('visible');
+					section.classList.add('animated-border');
+					section.classList.remove('collapsed');
+					expandedSections.push(section);
+				}
+			});
+		});
 		textContainer.style.display = 'none'; // Hide the text container
 		localStorage.setItem('skipIntro', 'true'); // Set skipIntro to true in localStorage
 	}
@@ -150,3 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 });
+
+function revealEmail() {
+	const emailLink = document.getElementById('email-link');
+	const email = atob('bGFjaC56ZGVuZWtAZ21haWwuY29t'); 
+	emailLink.href = `mailto:${email}`;
+	emailLink.querySelector('img').alt = email;
+}

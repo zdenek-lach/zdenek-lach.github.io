@@ -267,7 +267,9 @@ header p {
 section {
 	padding: 0; /* Remove padding to make the title span into the border */
 	margin: 20px 0; /* Adjust margin to leave space on the sides */
-	background-color: var(--background-color); /* Set section background to black */
+	background-color: var(
+		--background-color
+	); /* Set section background to black */
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	opacity: 1; /* Ensure the title does not fade away */
 	transform: translateY(0); /* Ensure the title does not fade away */
@@ -279,7 +281,9 @@ section {
 section.visible {
 	max-height: 400px; /* Increase the maximum height of expanded sections */
 	border-radius: 0.5rem;
-	background-color: var(--background-color); /* Ensure visible sections have black background */
+	background-color: var(
+		--background-color
+	); /* Ensure visible sections have black background */
 }
 
 section h2 {
@@ -287,22 +291,23 @@ section h2 {
 	cursor: pointer; /* Indicate that the title is clickable */
 	background-color: var(--header-bg-color); /* Mocha initial background color */
 	padding: 10px 20px; /* Adjust padding to remove the gap */
-	border-top-left-radius: .2rem; /* Rounded corners for the top */
-	border-top-right-radius: .2rem; /* Rounded corners for the top */
+	border-top-left-radius: 0.2rem; /* Rounded corners for the top */
+	border-top-right-radius: 0.2rem; /* Rounded corners for the top */
 	transition: background-color 0.3s ease-in-out;
 }
 
 section h2:hover {
 	background-color: var(--section-hover-bg-color); /* Mocha hover shade */
-	
 }
 
 section.collapsed {
-	max-height: 50px; /* Ensure the title is always visible when minimized */
+	max-height: 40px; /* Ensure the title is always visible when minimized */
 	border-top-left-radius: 0; /* Remove top-left border radius */
 	border-top-right-radius: 0; /* Remove top-right border radius */
 	border-radius: 0.2rem;
-	background-color: var(--background-color); /* Ensure collapsed sections have black background */
+	background-color: var(
+		--background-color
+	); /* Ensure collapsed sections have black background */
 }
 
 ul {
