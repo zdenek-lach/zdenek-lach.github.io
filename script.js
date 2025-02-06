@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				maxExpandedSections = 5;
 				break;
 			default:
-				maxExpandedSections = 6;
+				maxExpandedSections = 2;
 				break;
 		}
 		
