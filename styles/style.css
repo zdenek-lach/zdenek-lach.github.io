@@ -2,7 +2,7 @@
 	--background-color: #000;
 	--text-color: #cdd6f4;
 	--gradient-start: #000;
-	--gradient-end: #1e1e2e;
+	--gradient-end: #26263a;
 	--header-bg-color: #45475a;
 	--header-text-color: #cdd6f4;
 	--border-color: #ff79c6;
@@ -68,13 +68,13 @@ body {
 }
 
 body.intro-done {
-	background-image: linear-gradient(
-		to bottom,
+	background: linear-gradient(
 		var(--gradient-start),
 		var(--gradient-end)
 	); /* Gradient background */
 	animation: fadeIn 1s ease-in-out; /* Add fade-in animation */
 }
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -233,6 +233,12 @@ header p {
 	margin-bottom: 5px; /* Adjust margin to align links neatly */
 	border-radius: 0; /* Remove rounding on the contact icons */
 	color: var(--contact-icon-color); /* Mocha icon color */
+	transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.contact a:hover img {
+	transform: scale(1.1);
+	filter: brightness(1.2);
 }
 
 .main-content {
@@ -317,6 +323,11 @@ ul {
 
 ul li {
 	margin: 10px 0;
+}
+
+ul li strong {
+	display: inline-block;
+	width: 150px;
 }
 
 ul li strong {
@@ -533,4 +544,37 @@ ul li strong {
 	display: flex;
 	align-items: center;
 	justify-content: inherit;
+}
+
+.progress-bar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 5px;
+	background-color: var(--border-color); /* Catppuccin color */
+	transition: width 0.1s;
+	display: none;
+}
+
+.skip-introduction {
+	font-size: 0.85em; /* Slightly bigger */
+	color: var(--text-color);
+	opacity: 0;
+	margin-top: 10px;
+	position: absolute; /* Ensure it doesn't shift the intro text */
+	transition: opacity 0.5s ease-in-out; /* Fade-in effect */
+}
+
+.skip-instruction {
+	font-size: 0.85em; /* Slightly bigger */
+	color: var(--text-color);
+	opacity: 0;
+	margin-top: 10px;
+	position: absolute; /* Ensure it doesn't shift the intro text */
+	transition: opacity 0.5s ease-in-out; /* Fade-in effect */
+	bottom: 50px; /* Position above the progress bar */
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
 }

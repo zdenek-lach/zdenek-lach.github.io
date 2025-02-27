@@ -3,14 +3,68 @@ document.addEventListener('DOMContentLoaded', () => {
 	let skipIntro = localStorage.getItem('skipIntro') === 'true'; // Retrieve skipIntro from localStorage
 	console.log('skipIntro:', skipIntro);
 
+	const urlParams = new URLSearchParams(window.location.search);
+	if (urlParams.has('skip-intro')) {
+		localStorage.setItem('skipIntro', 'true');
+	}
+
 	const textElement = document.querySelector('.text');
 	const textContainer = document.querySelector('.text-container');
 	const header = document.querySelector('.header');
 	const mainContent = document.querySelector('.main-content');
 	const replayIntroButton = document.querySelector('.replay-intro-button');
+	const skipInstruction = document.createElement('div');
+	skipInstruction.classList.add('skip-instruction');
+	skipInstruction.textContent = 'Keep holding space to skip the intro';
+	document.body.appendChild(skipInstruction);
 	header.style.display = 'none'; // Hide the header initially
 	mainContent.style.display = 'none'; // Hide the main content initially
 	replayIntroButton.style.display = 'none'; // Hide the replay button initially
+
+	const progressBar = document.createElement('div');
+	progressBar.classList.add('progress-bar');
+	document.body.appendChild(progressBar);
+
+	let spacebarHeld = false;
+	let holdStartTime;
+	let instructionTimeout;
+
+	document.addEventListener('keydown', (event) => {
+		if (event.code === 'Space' && !spacebarHeld) {
+			spacebarHeld = true;
+			holdStartTime = Date.now();
+			progressBar.style.width = '0%';
+			progressBar.style.display = 'block';
+			instructionTimeout = setTimeout(() => {
+				skipInstruction.style.opacity = '0.5'; // Fade-in effect
+			}, 500); // Show the instruction after 0.5 seconds
+		}
+	});
+
+	document.addEventListener('keyup', (event) => {
+		if (event.code === 'Space') {
+			spacebarHeld = false;
+			progressBar.style.display = 'none';
+			skipInstruction.style.opacity = '0'; // Fade-out effect
+			clearTimeout(instructionTimeout);
+		}
+	});
+
+	function updateProgressBar() {
+		if (spacebarHeld) {
+			const elapsedTime = Date.now() - holdStartTime;
+			const progress = Math.min(elapsedTime / 2000, 1) * 100;
+			progressBar.style.width = `${progress}%`;
+
+			if (progress >= 100) {
+				localStorage.setItem('skipIntro', 'true');
+				showContent();
+			}
+		}
+		requestAnimationFrame(updateProgressBar);
+	}
+
+	updateProgressBar();
 
 	const intro_messages = [
 		'oh?',
@@ -74,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				maxExpandedSections = 2;
 				break;
 		}
-		
 
 		// Animation to open all sections and then gradually close them
 		setTimeout(() => {
@@ -102,8 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				}, sections.length * 50);
 			}, 1000); // Delay before starting to close sections
 		}, 1000); // Delay before opening all sections
-		
-		console.log("Max allowed sections: " + maxExpandedSections)
+
+		console.log('Max allowed sections: ' + maxExpandedSections);
 		sections.forEach((section, index) => {
 			section.classList.add('collapsed'); // Ensure all sections are collapsed initially
 			const title = section.querySelector('h2');
@@ -158,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function revealEmail() {
 	const emailLink = document.getElementById('email-link');
-	const email = atob('bGFjaC56ZGVuZWtAZ21haWwuY29t'); 
+	const email = atob('bGFjaC56ZGVuZWtAZ21haWwuY29t');
 	emailLink.href = `mailto:${email}`;
 	emailLink.querySelector('img').alt = email;
 }

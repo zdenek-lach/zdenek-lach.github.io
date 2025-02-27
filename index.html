@@ -45,20 +45,20 @@
 				<div class="contact">
 				<a href="https://www.linkedin.com/in/zdeneklach/" target="_blank">
 					<img
-						src="https://img.icons8.com/?size=100&id=8808&format=png&color=1e1e2e"
+						src="files/linkedin_icon.png"
 						alt="https://www.linkedin.com/in/zdeneklach/" />
 				</a>
 					<a id="email-link" href="#" onclick="revealEmail()" target="_blank">
 					<img
-						src="https://img.icons8.com/?size=100&id=63489&format=png&color=1e1e2e"/>
+						src="files/mail_icon.png"/>
 				</a>
 				<a href="https://github.com/zdenek-lach" target="_blank">
 					<img
-						src="https://img.icons8.com/?size=100&id=12599&format=png&color=1e1e2e"
+						src="files/github_icon.png"
 						alt="https://github.com/zdenek-lach" />
 				</a>
-				<a href='./files/Zdeněk Lach - Resumé 2025.pdf' download><div class='custom-download-button'>Download CV as PDF</div></a>        
 			</div>
+			<a href='./files/Zdeněk Lach - Resumé 2025.pdf' download><div class='custom-download-button'>Download CV as PDF</div></a>        
             </div>
 		</div>
 		<div class="main-content">
@@ -75,7 +75,7 @@
             <section>
 				<h2>Work Experience</h2>
 				<ul>
-					<li><div class='content-container'><div class="info-title">2024-present:</div><div class="info-content">onSemi Conductor - RDP Engineer</div></div></li>
+					<li><div class='content-container'><div class="info-title">2024-present:</div><div class="info-content"><span title="The lowercase is intentional as much as it hurts my eyes and soul, this is the company's desired format.">onsemi</span> - RDP Engineer</div></div></li>
 					<li><div class='content-container'><div class="info-title">2022-2023:</div><div class="info-content">Ness Digital Engineering - Junior Java Developer</div></div></li>
 					<li><div class='content-container'><div class="info-title">2021-2022:</div><div class="info-content">TietoEVRY - Internship: Technical Specialist for WKS team</div></div></li>
 					<li><div class='content-container'><div class="info-title">2016-2021:</div><div class="info-content">Many temporary jobs as I am keen on utilizing my time productively.</div></div></li>
@@ -92,7 +92,7 @@
 				<h2>Languages</h2>
 				<ul>
 					<li><div class='content-container'><div class="info-title">Czech</div><div class="info-content">Native</div></div></li>
-					<li><div class='content-container'><div class="info-title">English</div><div class="info-content">Reached FCE level on 28th June 2019 - Cambridge English Level 1 Certificate</div></div></li>
+					<li><div class='content-container'><div class="info-title">English</div><div class="info-content"><span title="I use English on an everyday basis, which makes my actual level a bit higher. Usual internet test results indicate I'm close to C2, but there is no official certificate for this claim.">Reached FCE level on 28th June 2019</span> - Cambridge English Level 1 Certificate</div></div></li>
 				</ul>
 			</section>
 
@@ -110,7 +110,15 @@
                 </section>
             </div>
 		</div>
+		<div class="skip-instruction">Keep holding space to skip the intro</div>
         <div class='replay-intro-button'><img src='https://img.icons8.com/?size=100&id=54312&format=png&color=1e1e2e'/></div>
+			<script>
+			// Check if the URL path is '/skip-intro'
+			if (window.location.pathname === '/skip-intro') {
+				localStorage.setItem('skipIntro', 'true');
+				window.location.replace('/'); // Redirect to the homepage
+			}
+		</script>
 		<script src="script.js"></script>
 	</body>
 </html>
