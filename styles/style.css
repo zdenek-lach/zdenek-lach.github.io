@@ -420,6 +420,11 @@ ul li strong {
 		padding: 5px 10px; /* Adjust padding */
 		bottom: 10px; /* Adjust position */
 		right: 10px; /* Adjust position */
+		display: none; /* Hide the button initially on mobile */
+	}
+
+	.replay-intro-button.visible {
+		display: inline-block; /* Show the button when visible class is added */
 	}
 
 	.replay-intro-button img {

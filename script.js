@@ -227,6 +227,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			replayIntroButton.classList.remove('visible'); // Hide the button when not at the bottom
 		}
 	});
+
+	// Ensure the replay button is not visible initially on mobile
+	if (window.innerWidth <= 600) {
+		replayIntroButton.style.display = 'none';
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 0) {
+				replayIntroButton.style.display = 'inline-block';
+			} else {
+				replayIntroButton.style.display = 'none';
+			}
+		});
+	}
 });
 
 function revealEmail() {
