@@ -3,11 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	let skipIntro = localStorage.getItem('skipIntro') === 'true'; // Retrieve skipIntro from localStorage
 	console.log('skipIntro:', skipIntro);
 
-	const urlParams = new URLSearchParams(window.location.search);
-	if (urlParams.has('skip-intro')) {
-		localStorage.setItem('skipIntro', 'true');
-	}
-
 	const textElement = document.querySelector('.text');
 	const textContainer = document.querySelector('.text-container');
 	const header = document.querySelector('.header');
@@ -25,17 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	progressBar.classList.add('progress-bar');
 	document.body.appendChild(progressBar);
 
-	const touchProgressBar = document.createElement('div');
-	touchProgressBar.classList.add('touch-progress-bar');
-	document.body.appendChild(touchProgressBar);
-
 	let spacebarHeld = false;
 	let holdStartTime;
 	let instructionTimeout;
-
-	let touchHeld = false;
-	let touchStartTime;
-	let touchInstructionTimeout;
 
 	document.addEventListener('keydown', (event) => {
 		if (event.code === 'Space' && !spacebarHeld) {
@@ -58,56 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	document.addEventListener('touchstart', (event) => {
-		if (!touchHeld) {
-			touchHeld = true;
-			touchStartTime = Date.now();
-			touchProgressBar.style.width = '0%';
-			touchProgressBar.style.display = 'block';
-			touchInstructionTimeout = setTimeout(() => {
-				skipInstruction.textContent = 'Keep holding to skip the intro';
-				skipInstruction.style.opacity = '0.5'; // Fade-in effect
-			}, 500); // Show the instruction after 0.5 seconds
-		}
-	});
-
-	document.addEventListener('touchend', (event) => {
-		touchHeld = false;
-		touchProgressBar.style.display = 'none';
-		skipInstruction.style.opacity = '0'; // Fade-out effect
-		clearTimeout(touchInstructionTimeout);
-	});
-
 	function updateProgressBar() {
-		if (spacebarHeld) {
+		if (spacebarHeld && !skipIntro) {
 			const elapsedTime = Date.now() - holdStartTime;
-			const progress = Math.min(elapsedTime / 2000, 1) * 100;
-			progressBar.style.width = `${progress}%`;
-
+			const progress = Math.min(elapsedTime / 1500, 1) * 100;
+			progressBar.style.width = `${progress}%`; // Update the width of the progress bar
+			console.log('elapsedTime' + elapsedTime);
+			console.log('progress ' + progress);
 			if (progress >= 100) {
 				localStorage.setItem('skipIntro', 'true');
-				showContent();
+				location.reload();
 			}
 		}
 		requestAnimationFrame(updateProgressBar);
 	}
 
-	function updateTouchProgressBar() {
-		if (touchHeld) {
-			const elapsedTime = Date.now() - touchStartTime;
-			const progress = Math.min(elapsedTime / 2000, 1) * 100;
-			touchProgressBar.style.width = `${progress}%`;
-
-			if (progress >= 100) {
-				localStorage.setItem('skipIntro', 'true');
-				showContent();
-			}
-		}
-		requestAnimationFrame(updateTouchProgressBar);
-	}
-
 	updateProgressBar();
-	updateTouchProgressBar();
 
 	const intro_messages = [
 		'oh?',
@@ -229,11 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('skipIntro', 'true'); // Set skipIntro to true in localStorage
 		skipInstruction.style.display = 'none'; // Hide the skip instruction
 		progressBar.style.display = 'none'; // Hide the progress bar
-		touchProgressBar.style.display = 'none'; // Hide the touch progress bar
 	}
 
 	if (skipIntro) {
-		console.log('Skipping intro');
+		console.log('Intro already played - skipped');
 		showContent(); // Skip the intro and show the content immediately
 	} else {
 		console.log('Starting intro');
@@ -243,7 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	replayIntroButton.addEventListener('click', () => {
 		console.log('Replay intro button clicked');
 		localStorage.setItem('skipIntro', 'false'); // Set skipIntro to false in localStorage
-		location.reload(); // Reload the page
+		reload = location.reload(); // Reload the page
+		setTimeout(reload, 2000);
 	});
 
 	window.addEventListener('scroll', () => {

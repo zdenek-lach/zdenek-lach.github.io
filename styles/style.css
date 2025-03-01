@@ -552,29 +552,14 @@ ul li strong {
 	left: 0;
 	width: 0;
 	height: 5px;
-	background-color: var(--border-color); /* Catppuccin color */
+	background: linear-gradient(
+		to right,
+		var(--border-gradient-start),
+		var(--border-gradient-middle),
+		var(--border-gradient-end)
+	);
 	transition: width 0.1s;
 	display: none;
-}
-
-.touch-progress-bar {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 0;
-	height: 5px;
-	background-color: var(--border-color); /* Catppuccin color */
-	transition: width 0.1s;
-	display: none;
-}
-
-.skip-introduction {
-	font-size: 0.85em; /* Slightly bigger */
-	color: var(--text-color);
-	opacity: 0;
-	margin-top: 10px;
-	position: absolute; /* Ensure it doesn't shift the intro text */
-	transition: opacity 0.5s ease-in-out; /* Fade-in effect */
 }
 
 .skip-instruction {
