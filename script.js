@@ -45,6 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
+	document.addEventListener('touchstart', (event) => {
+		if (!spacebarHeld) {
+			spacebarHeld = true;
+			holdStartTime = Date.now();
+			progressBar.style.width = '0%';
+			progressBar.style.display = 'block';
+			instructionTimeout = setTimeout(() => {
+				skipInstruction.style.opacity = '0.5'; // Fade-in effect
+			}, 500); // Show the instruction after 0.5 seconds
+		}
+	});
+
+	document.addEventListener('touchend', (event) => {
+		spacebarHeld = false;
+		progressBar.style.display = 'none';
+		skipInstruction.style.opacity = '0'; // Fade-out effect
+		clearTimeout(instructionTimeout);
+	});
+
 	function updateProgressBar() {
 		if (spacebarHeld && !skipIntro) {
 			const elapsedTime = Date.now() - holdStartTime;
@@ -54,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log('progress ' + progress);
 			if (progress >= 100) {
 				localStorage.setItem('skipIntro', 'true');
-				location.reload();
+				setTimeout(() => {
+					location.reload();
+				}, 1000); // Delay the page refresh by 1 second
 			}
 		}
 		requestAnimationFrame(updateProgressBar);
@@ -77,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (charIndex < currentMessage.length) {
 			textElement.textContent += currentMessage.charAt(charIndex);
 			charIndex++;
-			setTimeout(typeWriter, 50); // Typing speed
+			setTimeout(typeWriter, 35); // Typing speed
 		} else {
 			if (messageIndex < intro_messages.length - 1) {
 				messageIndex++;
